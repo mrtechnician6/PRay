@@ -2,51 +2,189 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Girl</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For My Queen</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
-</head>
-<body class="no-scroll">
+    <style>
+        :root { --gold: #d4af37; --deep-red: #2c0000; --pink: #ffafbd; }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    <audio id="loveSong" loop>
+        body { 
+            background: #000; 
+            color: white; 
+            font-family: 'Montserrat', sans-serif; 
+            overflow: hidden; 
+            height: 100vh;
+        }
+
+        /* MAGICAL ENTRANCE */
+        #doorway {
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            background: radial-gradient(circle, #4a0000 0%, #000 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            cursor: pointer;
+            transition: all 1.2s cubic-bezier(0.7, 0, 0.3, 1);
+        }
+
+        .envelope {
+            width: 180px;
+            height: 120px;
+            background: #fff;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .heart {
+            font-size: 3rem;
+            animation: heartBeat 1.2s infinite;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+
+        .tap-instruction {
+            margin-top: 25px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: var(--pink);
+            letter-spacing: 1px;
+        }
+
+        /* MAIN CONTENT */
+        #mainContent {
+            height: 100vh;
+            overflow-y: auto;
+            opacity: 0;
+            transition: opacity 2s ease;
+            background: linear-gradient(to bottom, #000, var(--deep-red));
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 { font-family: 'Dancing Script', cursive; font-size: 3.5rem; color: var(--gold); margin-bottom: 10px; }
+        
+        .message { font-size: 1.1rem; line-height: 1.6; max-width: 80%; opacity: 0.9; font-weight: 300; }
+
+        .proposal-box {
+            margin: 100px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+        }
+
+        .btn-yes {
+            margin-top: 30px;
+            padding: 15px 60px;
+            background: linear-gradient(45deg, var(--gold), #f9e29c);
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 0 20px var(--gold);
+        }
+
+        /* ANIMATION UTILS */
+        .fade-out { transform: translateY(-100%); opacity: 0; pointer-events: none; }
+    </style>
+</head>
+<body>
+
+    <audio id="myMusic" loop preload="auto">
         <source src="Kasari ❤️ _yabeshthapa _nepalivibes🌸🌸 _lyrics _moomin(MP3).mp3" type="audio/mpeg">
     </audio>
 
-    <div id="doorway" class="active">
-        <div class="envelope-wrapper" onclick="openLetter()">
-            <div class="envelope">
-                <div class="heart-seal">❤️</div>
-            </div>
-            <p class="tap-text">A surprise for the Queen... <br><span>(Tap to Open)</span></p>
+    <div id="doorway" onclick="unlockSurprise()">
+        <div class="envelope">
+            <div class="heart">❤️</div>
         </div>
+        <p class="tap-instruction">A letter for my Queen...<br>(Tap to Open)</p>
     </div>
 
-    <main id="mainContent" class="hidden">
-        <section class="hero">
-            <div class="floating-hearts" id="hearts-container"></div>
-            <h1 class="fade-in">To My Girl,</h1>
-            <p class="typewriter">Every second with you is a gift...</p>
-        </section>
-
-        <section class="gallery">
-            <div class="card">
-                <h2>Our Universe</h2>
-                <p>You are the star that guides my heart home.</p>
-            </div>
-        </section>
-
-        <section class="proposal">
-            <div class="glass-box">
-                <h2 class="glow-text">Will You Stay By My Side Forever?</h2>
-                <div class="button-container">
-                    <button class="btn-yes" onclick="celebrate()">YES, ALWAYS</button>
-                </div>
+    <main id="mainContent">
+        <section class="hero-section">
+            <h1>To My Everything,</h1>
+            <p class="message">You are the most beautiful part of my world. Every moment with you feels like a dream I never want to wake up from.</p>
+            
+            <div class="proposal-box">
+                <h2>Will you be mine forever?</h2>
+                <button class="btn-yes" onclick="celebrate()">YES, ALWAYS ❤️</button>
             </div>
         </section>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <script src="script.js"></script>
+    <script>
+        function unlockSurprise() {
+            const doorway = document.getElementById('doorway');
+            const content = document.getElementById('mainContent');
+            const music = document.getElementById('myMusic');
+
+            // 1. FORCE MUSIC
+            music.play().catch(e => console.log("Music blocked by browser policy"));
+
+            // 2. FORCE ANIMATION
+            doorway.classList.add('fade-out');
+            
+            setTimeout(() => {
+                content.style.opacity = "1";
+                document.body.style.overflowY = "auto";
+            }, 600);
+
+            // 3. START HEART RAIN
+            setInterval(createHeart, 300);
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.style.position = 'fixed';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = '-5vh';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            heart.style.transition = 'transform 3s linear, opacity 3s';
+            heart.style.zIndex = '999';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.style.transform = `translateY(110vh) rotate(${Math.random() * 360}deg)`;
+                heart.style.opacity = '0';
+            }, 100);
+
+            setTimeout(() => heart.remove(), 3000);
+        }
+
+        function celebrate() {
+            confetti({
+                particleCount: 150,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#d4af37', '#ff0000', '#ffffff']
+            });
+            alert("The happiest man alive! I love you! ❤️");
+        }
+    </script>
 </body>
 </html>
