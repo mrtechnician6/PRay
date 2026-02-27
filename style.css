@@ -91,7 +91,16 @@ button:hover { transform: scale(1.1); }
     margin-bottom: 2rem;
 }
 
+
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
+}
+body {
+    overflow: hidden; /* Locks the screen at the start */
+}
+
+/* Add a class via JS once clicked to allow scrolling */
+.allow-scroll {
+    overflow-y: auto;
 }
