@@ -1,0 +1,97 @@
+:root {
+    --primary-pink: #ff758c;
+    --secondary-pink: #ff7eb3;
+    --glass: rgba(255, 255, 255, 0.15);
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+    color: white;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+h1, h2 {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Intro Overlay */
+#overlay {
+    position: fixed;
+    inset: 0;
+    background: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 1s ease;
+}
+
+.intro-content { text-align: center; }
+
+button {
+    padding: 15px 40px;
+    border: none;
+    border-radius: 30px;
+    background: var(--primary-pink);
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.3s;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+button:hover { transform: scale(1.1); }
+
+/* Layout */
+.page {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 3rem;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 600px;
+    box-shadow: 0 25px 45px rgba(0,0,0,0.1);
+    animation: fadeIn 2s ease;
+}
+
+/* Grid for Photos */
+.photo-grid {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.photo-frame {
+    width: 100px;
+    height: 100px;
+    background: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.proposal-text {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
