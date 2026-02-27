@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Girl</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+</head>
+<body class="no-scroll">
+
+    <audio id="loveSong" loop>
+        <source src="Kasari ❤️ _yabeshthapa _nepalivibes🌸🌸 _lyrics _moomin(MP3).mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="doorway" class="active">
+        <div class="envelope-wrapper" onclick="openLetter()">
+            <div class="envelope">
+                <div class="heart-seal">❤️</div>
+            </div>
+            <p class="tap-text">A surprise for the Queen... <br><span>(Tap to Open)</span></p>
+        </div>
+    </div>
+
+    <main id="mainContent" class="hidden">
+        <section class="hero">
+            <div class="floating-hearts" id="hearts-container"></div>
+            <h1 class="fade-in">To My Girl,</h1>
+            <p class="typewriter">Every second with you is a gift...</p>
+        </section>
+
+        <section class="gallery">
+            <div class="card">
+                <h2>Our Universe</h2>
+                <p>You are the star that guides my heart home.</p>
+            </div>
+        </section>
+
+        <section class="proposal">
+            <div class="glass-box">
+                <h2 class="glow-text">Will You Stay By My Side Forever?</h2>
+                <div class="button-container">
+                    <button class="btn-yes" onclick="celebrate()">YES, ALWAYS</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
